@@ -1,0 +1,6 @@
+@DecisionManagerAPI_HostAddress = http://localhost:5129
+
+GET {{DecisionManagerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
