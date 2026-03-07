@@ -132,13 +132,9 @@ Handles player progression, card configuration, game settings and random events.
 
 ## Authentication
 
-Admin endpoints (`PUT`) are protected by an API Key passed in the request header :
+All endpoints (other than the /health) are protected by an API Key passed in the request header to restrict the api being available in the web browser.
 
-```
-X-Admin-Key: your-secret-admin-key
-```
-
-Unity client endpoints (`GET`, `POST`) are public.
+Admin endpoints (`PUT`) are protected by an API Key passed in the request header.
 
 ---
 
