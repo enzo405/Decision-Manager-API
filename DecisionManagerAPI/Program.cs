@@ -6,7 +6,7 @@ using DotNetEnv;
 
 using Microsoft.EntityFrameworkCore;
 
-Env.Load();
+Env.Load("../.env");
 
 var builder = WebApplication.CreateBuilder(args);
 

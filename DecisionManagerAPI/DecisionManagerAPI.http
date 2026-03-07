@@ -1,6 +1,69 @@
-@DecisionManagerAPI_HostAddress = http://localhost:5129
+@baseUrl = http://localhost:5000
+@adminKey = your-secret-admin-key
+@deviceId = test-device-123
 
-GET {{DecisionManagerAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+### Health check
+GET {{baseUrl}}/health
 
-###
+### ── Players ────────────────────────────────────────────────────────────────
+
+### Create player
+POST {{baseUrl}}/api/players
+Content-Type: application/json
+
+{
+  "deviceId": "{{deviceId}}"
+}
+
+### Get player
+GET {{baseUrl}}/api/players/{{deviceId}}
+
+### Update progression
+PUT {{baseUrl}}/api/players/{{deviceId}}/progression
+Content-Type: application/json
+
+{
+  "currentXP": 500,
+  "currentLevel": 2
+}
+
+### ── Cards ───────────────────────────────────────────────────────────────────
+
+### Get all cards
+GET {{baseUrl}}/api/cards
+
+### Get cards by level
+GET {{baseUrl}}/api/cards?level=2
+
+### ── Game Config ─────────────────────────────────────────────────────────────
+
+### Get thresholds
+GET {{baseUrl}}/api/config/thresholds
+
+### Update thresholds (admin)
+PUT {{baseUrl}}/api/config/thresholds
+Content-Type: application/json
+X-Admin-Key: {{adminKey}}
+
+{
+  "baseXP": 2000,
+  "exponent": 2.0,
+  "xpPerTurn": 50,
+  "xpBonusGoodDecision": 25,
+  "maxLevel": 20
+}
+
+### Get defeat conditions
+GET {{baseUrl}}/api/config/defeat-conditions
+
+### Update defeat conditions (admin)
+PUT {{baseUrl}}/api/config/defeat-conditions
+Content-Type: application/json
+X-Admin-Key: {{adminKey}}
+
+{
+  "stress": { "min": 0, "max": 85 },
+  "turnover": { "min": 0, "max": 80 },
+  "performance": { "min": 15, "max": 100 },
+  "motivation": { "min": 0, "max": 100 }
+}
