@@ -42,11 +42,6 @@ Handles player progression, card configuration, game settings and random events.
 | `PUT` | `/api/config/defeat-conditions` | Modifier les conditions de défaite | `DefeatConditionsDTO` | `DefeatConditionsDTO` |
 | `GET` | `/api/config/level/title?level={userLevel}` | Récupérer le titre du niveau | — | `string` |
 
-### Random Events Endpoints
-| Method | Endpoint | Description | Request Body | Response |
-|---|---|---|---|---|
-| `GET` | `/api/events/roll?level={userLevel}` | Tirer un événement aléatoire | — | `RandomEventDTO?` |
-| `GET` | `/api/events` | Récupérer tous les événements | — | `RandomEventDTO[]` |
 
 ---
 
@@ -95,7 +90,22 @@ Handles player progression, card configuration, game settings and random events.
   "turnoverEffectOnFailure": 0,
   "riskLevel": "Low",
   "successMessage": "string",
-  "failureMessage": "string"
+  "failureMessage": "string",
+  "events": EventDto[]
+}
+```
+
+### EventDto
+```json
+{
+  "name": "string",
+  "weekrange": { "min": 1, "max": 3 },
+  "message": "string",
+  "chance": 0.2,
+  "motivationDelta": 0,
+  "stressDelta": 0,
+  "performanceDelta": 0,
+  "turnoverDelta": 0
 }
 ```
 
@@ -117,17 +127,6 @@ Handles player progression, card configuration, game settings and random events.
   "turnover": { "min": 0, "max": 80 },
   "performance": { "min": 15, "max": 100 },
   "motivation": { "min": 0, "max": 100 }
-}
-```
-
-### RandomEventDTO
-```json
-{
-  "message": "string",
-  "motivationDelta": 0,
-  "stressDelta": 0,
-  "performanceDelta": 0,
-  "turnoverDelta": 0
 }
 ```
 
