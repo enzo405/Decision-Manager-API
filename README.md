@@ -142,4 +142,3 @@ Admin endpoints (`PUT`) are protected by an API Key passed in the request header
 
 - `SystemInfo.deviceUniqueIdentifier` on Android 10+ resets on app reinstall — player progression is lost if the app is uninstalled
 - No real authentication for players — device ID only
-- Admin UI requires direct network access to the API
