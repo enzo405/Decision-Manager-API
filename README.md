@@ -24,7 +24,6 @@ Handles player progression, card configuration, game settings and random events.
 |---|---|---|---|---|
 | `POST` | `/api/players` | Créer un joueur | `{ deviceId: string }` | `PlayerDTO` |
 | `GET` | `/api/players/{deviceId}` | Récupérer un joueur | — | `PlayerDTO` |
-| `GET` | `/api/players/{deviceId}/progression` | Récupérer XP et niveau | — | `ProgressionDTO` |
 | `PUT` | `/api/players/{deviceId}/progression` | Mettre à jour XP et niveau | `UpdateProgressionDTO` | `ProgressionDTO` |
 
 ### Cards Endpoints
@@ -40,8 +39,6 @@ Handles player progression, card configuration, game settings and random events.
 | `PUT` | `/api/config/thresholds` | Modifier les seuils | `ThresholdsDTO` | `ThresholdsDTO` |
 | `GET` | `/api/config/defeat-conditions` | Récupérer les conditions de défaite | — | `DefeatConditionsDTO` |
 | `PUT` | `/api/config/defeat-conditions` | Modifier les conditions de défaite | `DefeatConditionsDTO` | `DefeatConditionsDTO` |
-| `GET` | `/api/config/level/title?level={userLevel}` | Récupérer le titre du niveau | — | `string` |
-
 
 ---
 
@@ -51,7 +48,8 @@ Handles player progression, card configuration, game settings and random events.
 ```json
 {
   "deviceId": "string",
-  "createdAt": "datetime"
+  "createdAt": "datetime",
+  "progression": ProgressionDTO
 }
 ```
 

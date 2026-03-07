@@ -21,7 +21,7 @@ public static class CardMappings
     card.RiskLevel,
     card.SuccessMessage,
     card.FailureMessage,
-    card.Events.Select(ToDTO).ToList()
+    card.Events.Select(ToDTO).ToList() ?? []
   );
 
   public static EventDto ToDTO(this Event ev) => new(
@@ -54,6 +54,6 @@ public static class CardMappings
   );
 
   public static PlayerDto ToDTO(this Player player) => new(
-    player.DeviceId, player.CreatedAt
+    player.DeviceId, player.CreatedAt, player.Progression.ToDTO()
   );
 }
