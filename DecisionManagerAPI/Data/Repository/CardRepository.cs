@@ -18,13 +18,17 @@ public class CardRepository(DecisionManagerDbContext context) : ICardRepository
 
   public async Task<List<CardDto>> GetAllAsync()
   {
-    return await _context.Cards.Select(c => c.ToDTO()).ToListAsync();
+    return await _context.Cards
+      .Include(c => c.Events)
+      .Select(c => c.ToDTO())
+      .ToListAsync();
   }
 
   public async Task<List<CardDto>> GetCardByLevelAsync(int level)
   {
     return await _context.Cards
       .Where(c => c.RequiredLevel <= level)
+      .Include(c => c.Events)
       .Select(c => c.ToDTO())
       .ToListAsync();
   }

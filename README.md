@@ -73,8 +73,8 @@ Handles player progression, card configuration, game settings and random events.
 ### CardDTO
 ```json
 {
-  "name": "string",
-  "cardName": "string",
+  "slug": "string",
+  "displayName": "string",
   "description": "string",
   "requiredLevel": 1,
   "successProbability": 0.75,
