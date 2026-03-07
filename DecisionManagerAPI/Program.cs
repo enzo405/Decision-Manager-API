@@ -32,6 +32,6 @@ using (var scope = app.Services.CreateScope())
   await db.Database.MigrateAsync();
 }
 
-app.UseMiddleware<ApiKeyMiddleware>();
+app.UseMiddleware<ApiMiddleware>();
 app.MapControllers();
 await app.RunAsync();
