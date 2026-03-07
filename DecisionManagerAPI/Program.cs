@@ -3,7 +3,6 @@ DotNetEnv.Env.Load("../.env");
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION");
-Console.WriteLine($"Connection string: {connectionString}");
 
 builder.Services.AddOpenApi();
 
