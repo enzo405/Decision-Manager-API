@@ -30,7 +30,6 @@ Handles player progression, card configuration, game settings and random events.
 | Method | Endpoint | Description | Request Body | Response |
 |---|---|---|---|---|
 | `GET` | `/api/cards` | Récupérer toutes les cartes | — | `CardDTO[]` |
-| `GET` | `/api/cards?level={userLevel}` | Récupérer les cartes débloquées | — | `CardDTO[]` |
 
 ### Game Config Endpoints
 | Method | Endpoint | Description | Request Body | Response |

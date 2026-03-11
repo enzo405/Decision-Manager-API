@@ -26,13 +26,14 @@ public static class CardMappings
 
   public static EventDto ToDTO(this Event ev) => new(
     ev.EventName,
-    (ev.WeekRangeMin, ev.WeekRangeMax),
+    new WeekRangeDto(ev.WeekRangeMin, ev.WeekRangeMax),
     ev.Message,
     ev.Chance,
     ev.MotivationDelta,
     ev.StressDelta,
     ev.PerformanceDelta,
-    ev.TurnoverDelta);
+    ev.TurnoverDelta,
+    ev.Card.Slug);
 
   public static ThresholdsDto ToDTO(this GameConfig gameConfig) => new(
     gameConfig.BaseXP,

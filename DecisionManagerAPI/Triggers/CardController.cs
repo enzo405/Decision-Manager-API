@@ -11,11 +11,9 @@ public class CardController(ICardRepository cardRepository) : ControllerBase
   private readonly ICardRepository _cardRepository = cardRepository;
 
   [HttpGet]
-  public async Task<IActionResult> GetAll([FromQuery] int? level)
+  public async Task<IActionResult> GetAll()
   {
-    var cards = level.HasValue
-        ? await _cardRepository.GetCardByLevelAsync(level.Value)
-        : await _cardRepository.GetAllAsync();
+    var cards = await _cardRepository.GetAllAsync();
 
     return Ok(cards);
   }
