@@ -26,7 +26,7 @@ public static class CardMappings
 
   public static EventDto ToDTO(this Event ev) => new(
     ev.EventName,
-    new WeekRangeDto(ev.WeekRangeMin, ev.WeekRangeMax),
+    new(ev.WeekRangeMin, ev.WeekRangeMax),
     ev.Message,
     ev.Chance,
     ev.MotivationDelta,
@@ -44,10 +44,10 @@ public static class CardMappings
   );
 
   public static DefeatConditionDto ToDTO(this DefeatConditions defeatConditions) => new(
-    (defeatConditions.StressMin, defeatConditions.StressMax),
-    (defeatConditions.TurnoverMin, defeatConditions.TurnoverMax),
-    (defeatConditions.PerformanceMin, defeatConditions.PerformanceMax),
-    (defeatConditions.MotivationMin, defeatConditions.MotivationMax)
+    new(defeatConditions.StressMin, defeatConditions.StressMax),
+    new(defeatConditions.TurnoverMin, defeatConditions.TurnoverMax),
+    new(defeatConditions.PerformanceMin, defeatConditions.PerformanceMax),
+    new(defeatConditions.MotivationMin, defeatConditions.MotivationMax)
   );
 
   public static ProgressionDto ToDTO(this Progression progression) => new(

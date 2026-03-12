@@ -1,3 +1,5 @@
 namespace DecisionManagerAPI.Dtos;
 
-public record DefeatConditionDto((int Min, int Max) Stress, (int Min, int Max) Turnover, (int Min, int Max) Performance, (int Min, int Max) Motivation);
+public record DefeatConditionDto(MinMaxDto Stress, MinMaxDto Turnover, MinMaxDto Performance, MinMaxDto Motivation);
+
+public record MinMaxDto(int Min, int Max);
