@@ -38,6 +38,8 @@ Handles player progression, card configuration, game settings and random events.
 | `PUT` | `/api/config/thresholds` | Modifier les seuils | `ThresholdsDTO` | `ThresholdsDTO` |
 | `GET` | `/api/config/defeat-conditions` | Récupérer les conditions de défaite | — | `DefeatConditionsDTO` |
 | `PUT` | `/api/config/defeat-conditions` | Modifier les conditions de défaite | `DefeatConditionsDTO` | `DefeatConditionsDTO` |
+| `GET` | `/api/config/initial-stats` | Récupérer les statistiques initial | — | `StatsInitDTO` |
+| `PUT` | `/api/config/initial-stats` | Modifier les statistiques initial | `StatsInitDTO` | `StatsInitDTO` |
 
 ---
 
@@ -124,6 +126,16 @@ Handles player progression, card configuration, game settings and random events.
   "turnover": { "min": 0, "max": 80 },
   "performance": { "min": 15, "max": 100 },
   "motivation": { "min": 0, "max": 100 }
+}
+```
+
+### StatsInitDTO
+```json
+{
+  "InitialMotivation": 50,
+  "InitialStress": 30,
+  "InitialPerformance": 40,
+  "InitialTurnover": 20
 }
 ```
 

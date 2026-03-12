@@ -9,8 +9,10 @@ public interface IGameConfigRepository
 {
   Task<ThresholdsDto> GetThresholdsAsync();
   Task<DefeatConditionDto> GetDefeatConditionAsync();
+  Task<StatsInitDto> GetStatsInitAsync();
   Task UpdateThresholdsAsync(ThresholdsDto thresholdsDto);
   Task UpdateDefeatConditionAsync(DefeatConditionDto defeatConditionDto);
+  Task UpdateStatsInitAsync(StatsInitDto statsInitDto);
 }
 
 
@@ -29,6 +31,13 @@ public class GameConfigRepository(DecisionManagerDbContext context) : IGameConfi
   {
     return await _context.GameConfigs
       .Select(c => c.ToDTO())
+      .FirstAsync();
+  }
+
+  public async Task<StatsInitDto> GetStatsInitAsync()
+  {
+    return await _context.StatsInits
+      .Select(s => s.ToDTO())
       .FirstAsync();
   }
 
@@ -57,6 +66,18 @@ public class GameConfigRepository(DecisionManagerDbContext context) : IGameConfi
     entity.XPPerTurn = thresholdsDto.XpPerTurn;
     entity.XPBonusGoodDecision = thresholdsDto.XpBonusGoodDecision;
     entity.MaxLevel = thresholdsDto.MaxLevel;
+
+    await _context.SaveChangesAsync();
+  }
+
+  public async Task UpdateStatsInitAsync(StatsInitDto statsInitDto)
+  {
+    var entity = await _context.StatsInits.FirstAsync();
+
+    entity.InitialMotivation = statsInitDto.InitialMotivation;
+    entity.InitialPerformance = statsInitDto.InitialPerformance;
+    entity.InitialStress = statsInitDto.InitialStress;
+    entity.InitialTurnover = statsInitDto.InitialTurnover;
 
     await _context.SaveChangesAsync();
   }

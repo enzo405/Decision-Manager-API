@@ -41,4 +41,19 @@ public class GameConfigController(IGameConfigRepository gameConfigRepository) : 
     await _gameConfigRepository.UpdateDefeatConditionAsync(dto);
     return NoContent();
   }
+
+  [HttpGet("initial-stats")]
+  public async Task<IActionResult> GetStatsInit()
+  {
+    var statsInit = await _gameConfigRepository.GetStatsInitAsync();
+    return Ok(statsInit);
+  }
+
+  [HttpPut("initial-stats")]
+  [AdminOnly]
+  public async Task<IActionResult> UpdateStatsInit([FromBody] StatsInitDto dto)
+  {
+    await _gameConfigRepository.UpdateStatsInitAsync(dto);
+    return NoContent();
+  }
 }

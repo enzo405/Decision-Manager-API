@@ -57,4 +57,11 @@ public static class CardMappings
   public static PlayerDto ToDTO(this Player player) => new(
     player.DeviceId, player.CreatedAt, player.Progression.ToDTO()
   );
+
+  public static StatsInitDto ToDTO(this StatsInit statsInit) => new(
+    statsInit.InitialMotivation,
+    statsInit.InitialStress,
+    statsInit.InitialPerformance,
+    statsInit.InitialTurnover
+  );
 }

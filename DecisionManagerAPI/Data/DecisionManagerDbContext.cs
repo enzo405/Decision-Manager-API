@@ -15,6 +15,7 @@ public class DecisionManagerDbContext : DbContext
   public DbSet<Event> Events { get; set; }
   public DbSet<GameConfig> GameConfigs { get; set; }
   public DbSet<DefeatConditions> DefeatConditions { get; set; }
+  public DbSet<StatsInit> StatsInits { get; set; }
 
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,6 +47,16 @@ public class DecisionManagerDbContext : DbContext
         XPPerTurn = 50,
         XPBonusGoodDecision = 25,
         MaxLevel = 20
+      });
+
+    modelBuilder.Entity<StatsInit>()
+      .HasData(new StatsInit
+      {
+        Id = 1,
+        InitialMotivation = 1,
+        InitialPerformance = 50,
+        InitialTurnover = 50,
+        InitialStress = 50,
       });
 
     modelBuilder.Entity<DefeatConditions>()
