@@ -30,7 +30,7 @@ namespace DecisionManagerAPI.Migrations
             migrationBuilder.InsertData(
                 table: "StatsInits",
                 columns: new[] { "Id", "InitialMotivation", "InitialPerformance", "InitialStress", "InitialTurnover" },
-                values: new object[] { 1, 1, 50, 50, 50 });
+                values: new object[] { 1, 50, 40, 20, 30 });
         }
 
         /// <inheritdoc />

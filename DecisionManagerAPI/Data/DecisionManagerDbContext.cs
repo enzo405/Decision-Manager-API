@@ -53,10 +53,10 @@ public class DecisionManagerDbContext : DbContext
       .HasData(new StatsInit
       {
         Id = 1,
-        InitialMotivation = 1,
-        InitialPerformance = 50,
-        InitialTurnover = 50,
-        InitialStress = 50,
+        InitialMotivation = 50,
+        InitialPerformance = 40,
+        InitialTurnover = 20,
+        InitialStress = 30,
       });
 
     modelBuilder.Entity<DefeatConditions>()

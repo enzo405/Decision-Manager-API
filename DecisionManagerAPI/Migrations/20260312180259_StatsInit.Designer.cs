@@ -307,10 +307,10 @@ namespace DecisionManagerAPI.Migrations
                         new
                         {
                             Id = 1,
-                            InitialMotivation = 1,
-                            InitialPerformance = 50,
-                            InitialStress = 50,
-                            InitialTurnover = 50
+                            InitialMotivation = 50,
+                            InitialPerformance = 40,
+                            InitialTurnover = 20,
+                            InitialStress = 30,
                         });
                 });
 
