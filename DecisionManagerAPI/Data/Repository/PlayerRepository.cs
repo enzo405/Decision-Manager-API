@@ -38,10 +38,10 @@ public class PlayerRepository(DecisionManagerDbContext context) : IPlayerReposit
 
   public async Task<PlayerDto?> GetByDeviceIdAsync(string deviceId)
   {
-    var entity = await _context.Players
+    return await _context.Players
+      .Include(p => p.Progression)
       .Where(p => p.DeviceId == deviceId)
-      .FirstAsync();
-
-    return entity?.ToDTO();
+      .Select(p => p.ToDTO())
+      .FirstOrDefaultAsync();
   }
 }
