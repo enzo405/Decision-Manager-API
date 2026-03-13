@@ -120,6 +120,56 @@ INSERT INTO "Cards" (
     'La gestion de crise chaotique a aggravé la situation. Le stress est à son comble.'
 ),
 (
+    'quick-wins', 'Victoires rapides',
+    'Identifiez et célébrez de petites victoires pour redonner de l''élan à l''équipe.',
+    1, 0.85,
+    10, -5, 5, -3,
+    -3, 3, -2, 2,
+    0,
+    'Les petites victoires célébrées ont redonné confiance à l''équipe. La dynamique est positive.',
+    'Les victoires mises en avant ont semblé artificielles. L''équipe se sent infantilisée.'
+),
+(
+    'one-on-one', 'Entretien one-on-one',
+    'Planifiez des réunions régulières en tête-à-tête avec chaque membre de l''équipe.',
+    1, 0.80,
+    12, -5, 5, -5,
+    -5, 5, -3, 3,
+    0,
+    'Les one-on-ones ont renforcé la confiance individuelle. Chacun se sent écouté et soutenu.',
+    'Les entretiens ont mis en lumière des frustrations profondes que vous n''étiez pas prêt à gérer.'
+),
+(
+    'skills-audit', 'Audit des compétences',
+    'Évaluez les compétences actuelles de l''équipe pour identifier les lacunes et les forces.',
+    1, 0.75,
+    5, 5, 10, -3,
+    -5, 10, -5, 3,
+    0,
+    'L''audit a révélé des talents cachés et des axes d''amélioration clairs. L''équipe se sent mieux orientée.',
+    'L''audit a été vécu comme un jugement. Certains membres se sentent remis en question.'
+),
+(
+    'team-charter', 'Charte d''équipe',
+    'Co-construisez une charte définissant les valeurs, règles et engagements de l''équipe.',
+    1, 0.75,
+    10, -8, 5, -5,
+    -5, 5, -3, 3,
+    0,
+    'La charte co-construite crée un cadre commun fort. L''équipe s''y réfère naturellement.',
+    'Le processus de co-construction a cristallisé les désaccords. Le résultat ne fait pas consensus.'
+),
+(
+    'recognition-program', 'Programme de reconnaissance',
+    'Mettez en place un système formel de reconnaissance des efforts et des réussites individuelles.',
+    1, 0.80,
+    15, -5, 5, -8,
+    -8, 5, -3, 5,
+    0,
+    'Le programme de reconnaissance valorise les efforts de chacun. La motivation est en forte hausse.',
+    'Le système perçu comme inéquitable a créé des jalousies. Certains se sentent invisibles.'
+),
+(
     'mentoring-session', 'Session de mentorat',
     'Mettez en place un programme de mentorat entre collaborateurs expérimentés et juniors.',
     2, 0.80,
@@ -168,6 +218,56 @@ INSERT INTO "Cards" (
     0,
     'Le programme bien-être a transformé l''ambiance. Le stress chute et la motivation grimpe.',
     'Le programme a été perçu comme superficiel. Les vrais problèmes ne sont pas adressés.'
+),
+(
+    'job-rotation', 'Rotation de postes',
+    'Proposez des rotations de postes pour développer la polyvalence et briser la routine.',
+    2, 0.65,
+    8, 5, 8, -5,
+    -8, 12, -8, 5,
+    1,
+    'La rotation a révélé des talents insoupçonnés et brisé les silos. L''équipe gagne en flexibilité.',
+    'La rotation imposée a désorganisé les équipes. La productivité chute pendant la période de transition.'
+),
+(
+    'internal-communication', 'Plan de communication interne',
+    'Structurez la communication interne pour réduire les malentendus et aligner l''équipe.',
+    2, 0.75,
+    8, -8, 8, -5,
+    -5, 8, -5, 3,
+    0,
+    'Le plan de communication a clarifié les flux d''information. Les malentendus se font rares.',
+    'Le surplus de communication a créé une surcharge informationnelle. L''équipe se sent noyée.'
+),
+(
+    'delegation-plan', 'Plan de délégation',
+    'Déléguez des responsabilités clés pour développer l''autonomie et la confiance de l''équipe.',
+    2, 0.70,
+    10, -5, 8, -8,
+    -8, 10, -8, 5,
+    1,
+    'La délégation bien encadrée a responsabilisé l''équipe. Les membres gagnent en autonomie et en confiance.',
+    'La délégation sans filet a mis certains membres en difficulté. Des erreurs coûteuses ont été commises.'
+),
+(
+    'team-retrospective', 'Rétrospective d''équipe',
+    'Organisez une rétrospective pour analyser collectivement les succès et les points d''amélioration.',
+    2, 0.80,
+    10, -8, 8, -5,
+    -5, 5, -3, 3,
+    0,
+    'La rétrospective a permis d''identifier des améliorations concrètes. L''équipe se sent entendue.',
+    'La rétrospective s''est transformée en séance de règlement de comptes. Les tensions ont resurgi.'
+),
+(
+    'peer-review', 'Évaluation par les pairs',
+    'Mettez en place un système d''évaluation mutuelle entre collègues pour enrichir les retours.',
+    2, 0.60,
+    5, 8, 10, -3,
+    -10, 15, -5, 8,
+    1,
+    'Les évaluations entre pairs ont apporté des retours riches et nuancés. La progression est visible.',
+    'Le système d''évaluation a généré des tensions interpersonnelles. La confiance s''est érodée.'
 ),
 (
     'agile-transformation', 'Transformation Agile',
@@ -426,7 +526,427 @@ SELECT
     'L''équipe exprime son mal-être face à une gestion trop analytique.',
     0.20, 4, 7,
     -10, 12, -5, 8,
-    "Id" FROM "Cards" WHERE "Slug" = 'predictive-analytics';
+    "Id" FROM "Cards" WHERE "Slug" = 'predictive-analytics'
+UNION ALL
+SELECT 
+    'Récidive du conflit', 
+    'Le conflit semblait réglé mais refait surface avec plus d''intensité.', 
+    0.25, 2, 5, 
+    -8, 12, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'conflict-mediation'
+UNION ALL
+SELECT 
+    'Cohésion renforcée post-médiation', 
+    'L''épisode difficile a finalement soudé l''équipe autour d''une communication plus ouverte.', 
+    0.20, 3, 6, 
+    10, -8, 5, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'conflict-mediation'
+UNION ALL
+SELECT 
+    'Isolement progressif', 
+    'Plusieurs membres signalent un sentiment d''isolement croissant depuis le passage au télétravail.', 
+    0.25, 3, 6, 
+    -8, 8, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'flexible-remote-work'
+UNION ALL
+SELECT 
+    'Productivité en hausse', 
+    'Sans les interruptions du bureau, plusieurs membres ont vu leur productivité s''envoler.', 
+    0.30, 2, 5, 
+    5, -8, 12, -3,
+    "Id" FROM "Cards" WHERE "Slug" = 'flexible-remote-work'
+UNION ALL
+SELECT 
+    'Confusion des rôles persistante', 
+    'Plusieurs semaines après la restructuration, les périmètres de responsabilité restent flous.', 
+    0.30, 2, 5, 
+    -8, 12, -8, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-restructuring'
+UNION ALL
+SELECT 
+    'Synergies inattendues', 
+    'Les nouveaux binômes créés par la restructuration ont généré des collaborations très productives.', 
+    0.20, 4, 7, 
+    8, -5, 12, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-restructuring'
+UNION ALL
+SELECT 
+    'Démotivation suite au feedback', 
+    'Un feedback mal reçu a provoqué un désengagement visible chez un membre clé.', 
+    0.20, 1, 3, 
+    -10, 8, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'individual-feedback'
+UNION ALL
+SELECT 
+    'Progression accélérée', 
+    'Les axes d''amélioration clairement définis ont permis une montée en compétences rapide.', 
+    0.25, 3, 6, 
+    8, -3, 12, -3,
+    "Id" FROM "Cards" WHERE "Slug" = 'individual-feedback'
+UNION ALL
+SELECT 
+    'Séquelles psychologiques de la crise', 
+    'La pression vécue pendant la crise laisse des traces. Plusieurs membres montrent des signes d''épuisement.', 
+    0.30, 2, 5, 
+    -8, 15, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'crisis-management'
+UNION ALL
+SELECT 
+    'Leadership reconnu', 
+    'Votre gestion de la crise a renforcé votre crédibilité. L''équipe vous fait davantage confiance.', 
+    0.25, 3, 6, 
+    10, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'crisis-management'
+UNION ALL
+SELECT 
+    'Surcharge des mentors', 
+    'Les collaborateurs mentors se sentent surchargés par cette responsabilité supplémentaire.', 
+    0.25, 3, 6, 
+    -5, 12, -3, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'mentoring-session'
+UNION ALL
+SELECT 
+    'Montée en compétences visible', 
+    'Les juniors mentorés progressent à une vitesse remarquable. La qualité du travail s''améliore.', 
+    0.30, 4, 8, 
+    10, -5, 12, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'mentoring-session'
+UNION ALL
+SELECT 
+    'Désorientation post-réorganisation', 
+    'L''équipe peine à retrouver ses marques dans les nouveaux espaces. La routine est perturbée.', 
+    0.20, 1, 3, 
+    -5, 8, -5, 2,
+    "Id" FROM "Cards" WHERE "Slug" = 'workspace-reorganization'
+UNION ALL
+SELECT 
+    'Collaboration spontanée en hausse', 
+    'Les nouveaux espaces favorisent les échanges informels. Les idées émergent naturellement.', 
+    0.25, 3, 5, 
+    8, -5, 8, -3,
+    "Id" FROM "Cards" WHERE "Slug" = 'workspace-reorganization'
+UNION ALL
+SELECT 
+    'Contestation des évaluations', 
+    'Plusieurs membres contestent leurs évaluations auprès des RH. Le climat se tend.', 
+    0.25, 2, 4, 
+    -8, 12, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'performance-review'
+UNION ALL
+SELECT 
+    'Objectifs mieux compris', 
+    'Suite aux entretiens, les membres ont une vision plus claire de leurs objectifs. La performance s''améliore.', 
+    0.30, 3, 6, 
+    8, -5, 10, -3,
+    "Id" FROM "Cards" WHERE "Slug" = 'performance-review'
+UNION ALL
+SELECT 
+    'Frictions inter-équipes', 
+    'Des désaccords sur les méthodes de travail entre équipes ralentissent l''avancement du projet.', 
+    0.25, 2, 5, 
+    -5, 10, -8, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'cross-team-project'
+UNION ALL
+SELECT 
+    'Meilleures pratiques partagées', 
+    'Le projet inter-équipes a permis de diffuser des bonnes pratiques dans toute l''organisation.', 
+    0.20, 4, 7, 
+    8, -5, 12, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'cross-team-project'
+UNION ALL
+SELECT 
+    'Programme perçu comme cosmétique', 
+    'L''équipe perçoit le programme bien-être comme une façade qui ne s''attaque pas aux vraies causes de stress.', 
+    0.25, 3, 5, 
+    -5, 8, -3, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'wellness-program'
+UNION ALL
+SELECT 
+    'Baisse significative de l''absentéisme', 
+    'Le programme bien-être a eu un impact mesurable sur la santé des collaborateurs. L''absentéisme chute.', 
+    0.25, 4, 8, 
+    10, -10, 8, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'wellness-program'
+UNION ALL
+SELECT 
+    'Vision partagée mise à l''épreuve', 
+    'La vision définie en séminaire se heurte à la réalité opérationnelle. Des ajustements s''imposent.', 
+    0.20, 3, 6, 
+    -5, 8, -3, 2,
+    "Id" FROM "Cards" WHERE "Slug" = 'strategic-retreat'
+UNION ALL
+SELECT 
+    'Engagement stratégique renouvelé', 
+    'Les décisions prises en séminaire sont appliquées avec conviction. L''alignement est fort.', 
+    0.25, 4, 8, 
+    12, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'strategic-retreat'
+UNION ALL
+SELECT 
+    'Résistance aux nouveaux processus', 
+    'Une partie de l''équipe refuse d''adopter les nouvelles procédures jugées trop rigides.', 
+    0.25, 2, 5, 
+    -8, 10, -5, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'process-optimization'
+UNION ALL
+SELECT 
+    'Gains de productivité mesurables', 
+    'Les nouveaux processus ont réduit le temps de traitement de 20%. Les résultats parlent d''eux-mêmes.', 
+    0.25, 4, 7, 
+    5, -5, 15, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'process-optimization'
+UNION ALL
+SELECT 
+    'Jalousies entre candidats leaders', 
+    'La compétition entre les profils identifiés crée des tensions qui nuisent à la cohésion.', 
+    0.25, 3, 6, 
+    -8, 10, -3, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'leadership-development'
+UNION ALL
+SELECT 
+    'Leadership distribué efficace', 
+    'Les nouveaux leaders prennent des initiatives pertinentes. La charge managériale se répartit mieux.', 
+    0.20, 5, 8, 
+    10, -8, 10, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'leadership-development'
+UNION ALL
+SELECT 
+    'Choc culturel post-fusion', 
+    'Les différences de culture de travail entre les deux entités créent des incompréhensions profondes.', 
+    0.30, 2, 5, 
+    -10, 15, -8, 8,
+    "Id" FROM "Cards" WHERE "Slug" = 'merger-integration'
+UNION ALL
+SELECT 
+    'Synergies post-fusion concrétisées', 
+    'Les complémentarités entre les deux équipes génèrent des résultats que ni l''une ni l''autre n''aurait atteints seule.', 
+    0.20, 5, 9, 
+    10, -8, 15, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'merger-integration'
+UNION ALL
+SELECT 
+    'Difficultés d''onboarding à distance', 
+    'Les nouvelles recrues peinent à s''intégrer sans présence physique. La courbe d''apprentissage s''allonge.', 
+    0.25, 3, 6, 
+    -8, 8, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'remote-first-policy'
+UNION ALL
+SELECT 
+    'Attraction de talents élargies', 
+    'La politique Remote First attire des profils géographiquement inaccessibles auparavant. Le recrutement s''accélère.', 
+    0.20, 4, 8, 
+    8, -5, 10, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'remote-first-policy'
+UNION ALL
+SELECT 
+    'Résistance des anciennes habitudes', 
+    'Les comportements ancrés résistent à la nouvelle culture malgré les efforts déployés.', 
+    0.30, 3, 6, 
+    -8, 10, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'culture-revamp'
+UNION ALL
+SELECT 
+    'Nouvelle culture comme avantage concurrentiel', 
+    'La réputation de la nouvelle culture attire des talents et fidélise les meilleurs éléments.', 
+    0.20, 6, 10, 
+    12, -8, 8, -10,
+    "Id" FROM "Cards" WHERE "Slug" = 'culture-revamp'
+UNION ALL
+SELECT 
+    'Remise en question profonde', 
+    'Le coaching a soulevé des questionnements identitaires qui fragilisent temporairement votre posture.', 
+    0.20, 2, 5, 
+    -5, 10, -3, 2,
+    "Id" FROM "Cards" WHERE "Slug" = 'executive-coaching'
+UNION ALL
+SELECT 
+    'Changement de posture managériale visible', 
+    'L''équipe perçoit une évolution positive dans votre style de management. La confiance se renforce.', 
+    0.25, 4, 8, 
+    10, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'executive-coaching'
+UNION ALL
+SELECT 
+    'Départ suite à la politique zéro tolérance', 
+    'Un membre dont le comportement était borderline a préféré partir plutôt que de changer.', 
+    0.25, 2, 5, 
+    -3, 5, -3, 8,
+    "Id" FROM "Cards" WHERE "Slug" = 'zero-tolerance'
+UNION ALL
+SELECT 
+    'Climat de travail assaini', 
+    'L''équipe respire mieux depuis que les comportements toxiques ont disparu. La sécurité psychologique est revenue.', 
+    0.25, 4, 8, 
+    12, -10, 8, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'zero-tolerance'
+UNION ALL
+SELECT 
+    'Dérive sans garde-fous', 
+    'Sans supervision suffisante, certaines décisions autonomes ont conduit à des erreurs coûteuses.', 
+    0.25, 3, 6, 
+    -8, 10, -8, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'autonomy-framework'
+UNION ALL
+SELECT 
+    'Innovation bottom-up', 
+    'L''autonomie accordée a libéré la créativité. Des initiatives pertinentes émergent du terrain.', 
+    0.25, 5, 8, 
+    12, -8, 12, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'autonomy-framework'
+UNION ALL
+SELECT 
+    'Cynisme face au discours sur le sens', 
+    'La stratégie orientée sens est perçue comme du marketing interne. Le cynisme s''installe.', 
+    0.25, 3, 6, 
+    -8, 8, -3, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'purpose-driven-strategy'
+UNION ALL
+SELECT 
+    'Engagement exceptionnel', 
+    'Les membres qui adhèrent à la mission font preuve d''un engagement qui dépasse les attentes.', 
+    0.20, 5, 9, 
+    15, -10, 10, -10,
+    "Id" FROM "Cards" WHERE "Slug" = 'purpose-driven-strategy'
+UNION ALL
+SELECT 
+    'Effet soufflé retombé', 
+    'L''enthousiasme généré par les victoires rapides s''est essoufflé. L''équipe attend des défis plus substantiels.', 
+    0.25, 2, 4, 
+    -5, 5, -3, 2,
+    "Id" FROM "Cards" WHERE "Slug" = 'quick-wins'
+UNION ALL
+SELECT 
+    'Dynamique positive auto-entretenue', 
+    'Les succès célébrés ont enclenché une dynamique vertueuse. L''équipe cherche naturellement à se dépasser.', 
+    0.20, 3, 6, 
+    10, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'quick-wins'
+UNION ALL
+SELECT 
+    'Frustrations remontées en one-on-one', 
+    'Les entretiens individuels ont fait remonter des insatisfactions profondes que vous n''anticipiez pas.', 
+    0.25, 2, 4, 
+    -5, 10, -3, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'one-on-one'
+UNION ALL
+SELECT 
+    'Lien manager-collaborateur renforcé', 
+    'Les one-on-ones réguliers ont créé une relation de confiance durable. L''engagement individuel progresse.', 
+    0.30, 3, 6, 
+    12, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'one-on-one'
+UNION ALL
+SELECT 
+    'Complexe d''infériorité post-audit', 
+    'Certains membres mal évalués lors de l''audit se sentent dévalorisés et perdent confiance.', 
+    0.20, 1, 3, 
+    -8, 8, -5, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'skills-audit'
+UNION ALL
+SELECT 
+    'Formation ciblée efficace', 
+    'Les lacunes identifiées lors de l''audit ont permis de cibler des formations qui portent rapidement leurs fruits.', 
+    0.25, 3, 7, 
+    5, -3, 12, -3,
+    "Id" FROM "Cards" WHERE "Slug" = 'skills-audit'
+UNION ALL
+SELECT 
+    'Charte non respectée', 
+    'Malgré son élaboration collective, la charte n''est pas appliquée. Elle reste lettre morte.', 
+    0.20, 3, 6, 
+    -8, 8, -5, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-charter'
+UNION ALL
+SELECT 
+    'Référentiel commun consolidé', 
+    'L''équipe se réfère spontanément à la charte pour trancher les désaccords. Elle devient un vrai outil de gouvernance.', 
+    0.25, 4, 8, 
+    10, -8, 8, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-charter'
+UNION ALL
+SELECT 
+    'Sentiment d''injustice dans la reconnaissance', 
+    'Des membres estimant leurs contributions sous-évaluées expriment leur mécontentement ouvertement.', 
+    0.25, 2, 4, 
+    -10, 8, -3, 8,
+    "Id" FROM "Cards" WHERE "Slug" = 'recognition-program'
+UNION ALL
+SELECT 
+    'Compétition saine entre membres', 
+    'Le programme de reconnaissance a stimulé une émulation positive. La qualité du travail s''améliore.', 
+    0.20, 3, 6, 
+    8, -5, 10, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'recognition-program'
+UNION ALL
+SELECT 
+    'Perte d''expertise pendant la rotation', 
+    'La rotation a éloigné des experts de leurs domaines de prédilection. La qualité en pâtit temporairement.', 
+    0.25, 2, 5, 
+    -5, 10, -8, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'job-rotation'
+UNION ALL
+SELECT 
+    'Polyvalence accrue et silos brisés', 
+    'Les membres comprennent mieux les contraintes de leurs collègues. La collaboration s''améliore naturellement.', 
+    0.25, 4, 7, 
+    8, -5, 10, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'job-rotation'
+UNION ALL
+SELECT 
+    'Surcharge informationnelle', 
+    'Le flux d''informations structuré est devenu trop dense. L''équipe peine à distinguer l''essentiel de l''accessoire.', 
+    0.20, 2, 5, 
+    -5, 10, -5, 2,
+    "Id" FROM "Cards" WHERE "Slug" = 'internal-communication'
+UNION ALL
+SELECT 
+    'Malentendus en forte baisse', 
+    'Les erreurs dues à des incompréhensions ont chuté significativement. L''efficacité collective progresse.', 
+    0.25, 3, 6, 
+    8, -8, 10, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'internal-communication'
+UNION ALL
+SELECT 
+    'Sentiment d''abandon', 
+    'Certains membres délégués vivent la délégation comme un désengagement du manager. Ils se sentent livrés à eux-mêmes.', 
+    0.25, 2, 5, 
+    -8, 10, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'delegation-plan'
+UNION ALL
+SELECT 
+    'Montée en responsabilité réussie', 
+    'Les membres délégués ont pleinement pris en main leurs nouvelles responsabilités. La confiance est mutuelle.', 
+    0.25, 4, 8, 
+    12, -8, 10, -8,
+    "Id" FROM "Cards" WHERE "Slug" = 'delegation-plan'
+UNION ALL
+SELECT 
+    'Rétrospective sans suite', 
+    'Les actions identifiées en rétrospective ne sont pas mises en oeuvre. La crédibilité du processus s''érode.', 
+    0.25, 2, 5, 
+    -8, 8, -5, 3,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-retrospective'
+UNION ALL
+SELECT 
+    'Amélioration continue enclenchée', 
+    'Les changements issus de la rétrospective ont produit des résultats visibles. L''équipe croit au processus.', 
+    0.25, 3, 7, 
+    8, -8, 10, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'team-retrospective'
+UNION ALL
+SELECT 
+    'Rancune post-évaluation', 
+    'Des feedbacks mal formulés entre pairs ont créé des rancunes durables. L''ambiance s''est dégradée.', 
+    0.25, 2, 5, 
+    -10, 12, -5, 5,
+    "Id" FROM "Cards" WHERE "Slug" = 'peer-review'
+UNION ALL
+SELECT 
+    'Feedbacks de haute qualité', 
+    'Les évaluations entre pairs ont apporté des retours plus concrets et actionnables que les évaluations managériales.', 
+    0.20, 3, 6, 
+    8, -5, 12, -5,
+    "Id" FROM "Cards" WHERE "Slug" = 'peer-review';
 """
             );
         }
@@ -434,7 +954,8 @@ SELECT
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.Sql("""DELETE FROM "Events";""");
+            migrationBuilder.Sql("""DELETE FROM "Cards" ;""");
         }
     }
 }
