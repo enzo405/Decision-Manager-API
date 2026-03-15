@@ -1,0 +1,47 @@
+services:
+  decision-manager-api:
+    image: registry.luhcaran.fr/decision-manager:0.0
+    container_name: decision_manager_api
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=web
+      - traefik.http.routers.decision-manager.rule=Host(`api.decision-manager.luhcaran.fr`)
+      - traefik.http.routers.decision-manager.entrypoints=websecure
+      - traefik.http.routers.decision-manager.tls.certresolver=letsencryptresolver
+      - traefik.http.services.decision-manager.loadbalancer.server.port=8080
+      - traefik.http.services.decision-manager.loadbalancer.healthcheck.path=/health
+      - traefik.http.services.decision-manager.loadbalancer.healthcheck.interval=30s
+    depends_on:
+      decision-manager-db:
+        condition: service_healthy
+    networks:
+      - web
+      - internal
+
+  decision-manager-db:
+    image: postgres:17-alpine
+    container_name: decision_manager_db
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    volumes:
+      - decision_manager_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+
+networks:
+  web:
+    external: true
+  internal:
+    driver: bridge
+
+volumes:
+  decision_manager_pgdata:
