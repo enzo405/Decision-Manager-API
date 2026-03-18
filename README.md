@@ -145,7 +145,7 @@ Handles player progression, card configuration, game settings and random events.
 
 All endpoints (other than the /health) are protected by an API Key passed in the request header to restrict the api being available in the web browser.
 
-Admin endpoints (`PUT`) are protected by an API Key passed in the request header.
+Admin endpoints are protected by an API Key passed in the request header.
 
 ---
 
