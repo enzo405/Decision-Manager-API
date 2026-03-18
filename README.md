@@ -1,6 +1,6 @@
 # DecisionManager API
 
-REST API for the [Decision Manager](https://github.com/enzo405/DecisionManager) serious game — a mobile management simulation game built with Unity.
+REST API for the [Decision Manager](https://github.com/enzo405/Decision-Manager) serious game — a mobile management simulation game built with Unity.
 
 Handles player progression, card configuration, game settings and random events. Designed to allow remote configuration of game mechanics without requiring a game update.
 
