@@ -6,8 +6,10 @@ public class Card
 {
   public int Id { get; set; }
   public required string Slug { get; set; }
-  public required string DisplayName { get; set; }
-  public required string Description { get; set; }
+  public required string DisplayNameEn { get; set; }
+  public required string DisplayNameFr { get; set; }
+  public required string DescriptionEn { get; set; }
+  public required string DescriptionFr { get; set; }
   public required int RequiredLevel { get; set; }
   public required float SuccessProbability { get; set; }
   public required int MotivationEffect { get; set; }
@@ -19,7 +21,9 @@ public class Card
   public required int PerformanceEffectOnFailure { get; set; }
   public required int TurnoverEffectOnFailure { get; set; }
   public required RiskLevel RiskLevel { get; set; }
-  public required string SuccessMessage { get; set; }
-  public required string FailureMessage { get; set; }
+  public required string SuccessMessageEn { get; set; }
+  public required string SuccessMessageFr { get; set; }
+  public required string FailureMessageEn { get; set; }
+  public required string FailureMessageFr { get; set; }
   public required List<Event> Events { get; set; }
 }

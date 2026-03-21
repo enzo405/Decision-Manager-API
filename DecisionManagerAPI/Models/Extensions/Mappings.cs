@@ -4,10 +4,10 @@ namespace DecisionManagerAPI.Models.Extentions;
 
 public static class CardMappings
 {
-  public static CardDto ToDTO(this Card card) => new(
+  public static CardDto ToDTO(this Card card, string locale = "fr") => new(
     card.Slug,
-    card.DisplayName,
-    card.Description,
+    locale == "fr" ? card.DisplayNameFr : card.DisplayNameEn,
+    locale == "fr" ? card.DescriptionFr : card.DescriptionEn,
     card.RequiredLevel,
     card.SuccessProbability,
     card.MotivationEffect,
@@ -19,15 +19,15 @@ public static class CardMappings
     card.PerformanceEffectOnFailure,
     card.TurnoverEffectOnFailure,
     card.RiskLevel,
-    card.SuccessMessage,
-    card.FailureMessage,
-    card.Events.Select(ToDTO).ToList() ?? []
+    locale == "fr" ? card.SuccessMessageFr : card.SuccessMessageEn,
+    locale == "fr" ? card.FailureMessageFr : card.FailureMessageEn,
+    card.Events.Select(ev => ev.ToDTO(locale)).ToList() ?? []
   );
 
-  public static EventDto ToDTO(this Event ev) => new(
-    ev.EventName,
+  public static EventDto ToDTO(this Event ev, string locale) => new(
+    locale == "fr" ? ev.EventNameFr : ev.EventNameEn,
     new(ev.WeekRangeMin, ev.WeekRangeMax),
-    ev.Message,
+    locale == "fr" ? ev.MessageFr : ev.MessageEn,
     ev.Chance,
     ev.MotivationDelta,
     ev.StressDelta,

@@ -3,8 +3,10 @@ namespace DecisionManagerAPI.Models;
 public class Event
 {
   public int Id { get; set; }
-  public string EventName { get; set; } = string.Empty;
-  public string Message { get; set; } = string.Empty;
+  public string EventNameEn { get; set; } = string.Empty;
+  public string EventNameFr { get; set; } = string.Empty;
+  public string MessageEn { get; set; } = string.Empty;
+  public string MessageFr { get; set; } = string.Empty;
   public float Chance { get; set; }
   public int WeekRangeMin { get; set; }
   public int WeekRangeMax { get; set; }
