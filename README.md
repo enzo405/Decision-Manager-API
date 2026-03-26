@@ -11,7 +11,6 @@ Handles player progression, card configuration, game settings and random events.
 - **Framework** : ASP.NET Core 9
 - **Database** : PostgreSQL
 - **ORM** : Entity Framework Core
-- **Admin UI** : Blazor Server
 - **Containerization** : Docker / Docker Compose
 
 ---
