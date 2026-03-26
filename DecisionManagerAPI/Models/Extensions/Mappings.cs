@@ -21,7 +21,8 @@ public static class CardMappings
     card.RiskLevel,
     locale == "fr" ? card.SuccessMessageFr : card.SuccessMessageEn,
     locale == "fr" ? card.FailureMessageFr : card.FailureMessageEn,
-    card.Events.Select(ev => ev.ToDTO(locale)).ToList() ?? []
+    card.Events.Select(ev => ev.ToDTO(locale)).ToList() ?? [],
+    card.StatThresholds.Select(ToDto).ToList() ?? []
   );
 
   public static EventDto ToDTO(this Event ev, string locale) => new(
@@ -34,6 +35,13 @@ public static class CardMappings
     ev.PerformanceDelta,
     ev.TurnoverDelta,
     ev.Card.Slug);
+
+  public static CardStatThresholdDto ToDto(this CardStatThreshold cardStatThreshold) => new(
+    cardStatThreshold.StatName.ToString(),
+    cardStatThreshold.Condition.ToString(),
+    cardStatThreshold.Threshold,
+    cardStatThreshold.PenaltyAmount
+  );
 
   public static ThresholdsDto ToDTO(this GameConfig gameConfig) => new(
     gameConfig.BaseXP,

@@ -90,7 +90,8 @@ Handles player progression, card configuration, game settings and random events.
   "riskLevel": "Low",
   "successMessage": "string",
   "failureMessage": "string",
-  "events": EventDto[]
+  "events": EventDto[],
+  "statThresholds": CardStatThreshold[]
 }
 ```
 
@@ -107,6 +108,17 @@ Handles player progression, card configuration, game settings and random events.
   "turnoverDelta": 0
 }
 ```
+
+### CardStatThreshold
+```json
+{
+  "statName": "Motivation",
+  "condition": Above, // enum Above, Below
+  "threshold": 60,
+  "penaltyAmount": 0.15
+}
+```
+
 
 ### ThresholdsDTO
 ```json

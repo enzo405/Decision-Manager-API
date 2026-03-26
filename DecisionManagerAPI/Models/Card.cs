@@ -26,4 +26,5 @@ public class Card
   public required string FailureMessageEn { get; set; }
   public required string FailureMessageFr { get; set; }
   public required List<Event> Events { get; set; }
+  public List<CardStatThreshold> StatThresholds { get; set; } = new();
 }

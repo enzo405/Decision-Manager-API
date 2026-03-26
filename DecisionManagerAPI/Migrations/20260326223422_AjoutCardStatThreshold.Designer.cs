@@ -3,6 +3,7 @@ using System;
 using DecisionManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DecisionManagerAPI.Migrations
 {
     [DbContext(typeof(DecisionManagerDbContext))]
-    partial class DecisionManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260326223422_AjoutCardStatThreshold")]
+    partial class AjoutCardStatThreshold
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +107,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("Slug")
                         .IsUnique();
 
-                    b.ToTable("Cards", (string)null);
+                    b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.CardStatThreshold", b =>
@@ -133,7 +136,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("CardId");
 
-                    b.ToTable("CardStatThreshold", (string)null);
+                    b.ToTable("CardStatThreshold");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.DefeatConditions", b =>
@@ -170,7 +173,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DefeatConditions", (string)null);
+                    b.ToTable("DefeatConditions");
 
                     b.HasData(
                         new
@@ -239,7 +242,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("CardId");
 
-                    b.ToTable("Events", (string)null);
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.GameConfig", b =>
@@ -267,7 +270,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GameConfigs", (string)null);
+                    b.ToTable("GameConfigs");
 
                     b.HasData(
                         new
@@ -301,7 +304,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("DeviceId")
                         .IsUnique();
 
-                    b.ToTable("Players", (string)null);
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.Progression", b =>
@@ -326,7 +329,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("PlayerId")
                         .IsUnique();
 
-                    b.ToTable("Progressions", (string)null);
+                    b.ToTable("Progressions");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.StatsInit", b =>
@@ -351,7 +354,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StatsInits", (string)null);
+                    b.ToTable("StatsInits");
 
                     b.HasData(
                         new

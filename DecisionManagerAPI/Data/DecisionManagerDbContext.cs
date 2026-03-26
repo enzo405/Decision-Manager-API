@@ -38,6 +38,24 @@ public class DecisionManagerDbContext : DbContext
       .HasIndex(c => c.Slug)
       .IsUnique();
 
+    modelBuilder.Entity<CardStatThreshold>()
+      .HasOne(t => t.Card)
+      .WithMany(c => c.StatThresholds)
+      .HasForeignKey(t => t.CardId)
+      .OnDelete(DeleteBehavior.Cascade);
+
+    modelBuilder.Entity<CardStatThreshold>()
+        .Property(t => t.PenaltyAmount)
+        .HasPrecision(18, 2);
+
+    modelBuilder.Entity<CardStatThreshold>()
+        .Property(t => t.StatName)
+        .HasConversion<int>();
+
+    modelBuilder.Entity<CardStatThreshold>()
+        .Property(t => t.Condition)
+        .HasConversion<int>();
+
     modelBuilder.Entity<GameConfig>()
       .HasData(new GameConfig
       {
