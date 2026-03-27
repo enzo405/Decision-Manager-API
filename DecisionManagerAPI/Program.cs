@@ -21,6 +21,7 @@ builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 builder.Services.AddScoped<IProgressionRepository, ProgressionRepository>();
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<IGameConfigRepository, GameConfigRepository>();
+builder.Services.AddScoped<ICardComboRepository, CardComboRepository>();
 
 var app = builder.Build();
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));

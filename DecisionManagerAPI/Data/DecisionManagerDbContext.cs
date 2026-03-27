@@ -16,6 +16,10 @@ public class DecisionManagerDbContext : DbContext
   public DbSet<GameConfig> GameConfigs { get; set; }
   public DbSet<DefeatConditions> DefeatConditions { get; set; }
   public DbSet<StatsInit> StatsInits { get; set; }
+  public DbSet<CardStatThreshold> CardStatThreshold { get; set; }
+  public DbSet<CardRequirement> CardRequirement { get; set; }
+  public DbSet<CardComboTrigger> CardComboTrigger { get; set; }
+  public DbSet<CardCombo> CardCombo { get; set; }
 
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -90,5 +94,27 @@ public class DecisionManagerDbContext : DbContext
         MotivationMin = 0,
         MotivationMax = 100
       });
+
+    modelBuilder.Entity<CardComboTrigger>()
+      .HasOne(t => t.CardCombo)
+      .WithMany(c => c.Triggers)
+      .HasForeignKey(t => t.CardComboId);
+
+    modelBuilder.Entity<CardComboTrigger>()
+      .HasOne(t => t.Card)
+      .WithMany()
+      .HasForeignKey(t => t.CardSlug)
+      .HasPrincipalKey(c => c.Slug);
+
+    modelBuilder.Entity<CardRequirement>()
+      .HasOne(r => r.Card)
+      .WithMany(c => c.Requirements)
+      .HasForeignKey(r => r.CardId);
+
+    modelBuilder.Entity<CardRequirement>()
+      .HasOne(r => r.RequiredCard)
+      .WithMany()
+      .HasForeignKey(r => r.RequiredCardSlug)
+      .HasPrincipalKey(c => c.Slug);
   }
 }

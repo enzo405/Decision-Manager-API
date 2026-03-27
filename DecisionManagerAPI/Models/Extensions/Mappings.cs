@@ -22,7 +22,8 @@ public static class CardMappings
     locale == "fr" ? card.SuccessMessageFr : card.SuccessMessageEn,
     locale == "fr" ? card.FailureMessageFr : card.FailureMessageEn,
     card.Events.Select(ev => ev.ToDTO(locale)).ToList() ?? [],
-    card.StatThresholds.Select(ToDto).ToList() ?? []
+    card.StatThresholds.Select(ToDto).ToList() ?? [],
+    card.Requirements.Select(e => e.RequiredCardSlug).ToList() ?? []
   );
 
   public static EventDto ToDTO(this Event ev, string locale) => new(
@@ -41,6 +42,17 @@ public static class CardMappings
     cardStatThreshold.Condition.ToString(),
     cardStatThreshold.Threshold,
     cardStatThreshold.PenaltyAmount
+  );
+
+  public static CardComboDto ToDto(this CardCombo cardCombo, string locale) => new(
+    cardCombo.Id,
+    locale == "fr" ? cardCombo.NameFr : cardCombo.NameEn,
+    locale == "fr" ? cardCombo.MessageFr : cardCombo.MessageEn,
+    cardCombo.MotivationDelta,
+    cardCombo.StressDelta,
+    cardCombo.PerformanceDelta,
+    cardCombo.TurnoverDelta,
+    cardCombo.Triggers.Select(t => t.CardSlug).ToList()
   );
 
   public static ThresholdsDto ToDTO(this GameConfig gameConfig) => new(

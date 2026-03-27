@@ -21,39 +21,44 @@ Handles player progression, card configuration, game settings and random events.
 ### Player Endpoints
 | Method | Endpoint | Description | Request Body | Response |
 |---|---|---|---|---|
-| `POST` | `/api/players` | Créer un joueur | `{ deviceId: string }` | `PlayerDTO` |
-| `GET` | `/api/players/{deviceId}` | Récupérer un joueur | — | `PlayerDTO` |
-| `PUT` | `/api/players/{deviceId}/progression` | Mettre à jour XP et niveau | `UpdateProgressionDTO` | `ProgressionDTO` |
+| `POST` | `/api/players` | Créer un joueur | `{ deviceId: string }` | `PlayerDto` |
+| `GET` | `/api/players/{deviceId}` | Récupérer un joueur | — | `PlayerDto` |
+| `PUT` | `/api/players/{deviceId}/progression` | Mettre à jour XP et niveau | `UpdateProgressionDto` | `ProgressionDto` |
 
 ### Cards Endpoints
 | Method | Endpoint | Description | Request Body | Response |
 |---|---|---|---|---|
-| `GET` | `/api/cards` | Récupérer toutes les cartes | — | `CardDTO[]` |
+| `GET` | `/api/cards?locale=en` | Récupérer toutes les cartes | — | `CardDto[]` |
+
+### CardCombos Endpoints
+| Method | Endpoint | Description | Request Body | Response |
+|---|---|---|---|---|
+| `GET` | `/api/combos?locale=en` | Récupérer tous les combos avec leurs triggers | — | `CardComboDto[]` |
 
 ### Game Config Endpoints
 | Method | Endpoint | Description | Request Body | Response |
 |---|---|---|---|---|
-| `GET` | `/api/config/thresholds` | Récupérer les seuils | — | `ThresholdsDTO` |
-| `PUT` | `/api/config/thresholds` | Modifier les seuils | `ThresholdsDTO` | `ThresholdsDTO` |
-| `GET` | `/api/config/defeat-conditions` | Récupérer les conditions de défaite | — | `DefeatConditionsDTO` |
-| `PUT` | `/api/config/defeat-conditions` | Modifier les conditions de défaite | `DefeatConditionsDTO` | `DefeatConditionsDTO` |
-| `GET` | `/api/config/initial-stats` | Récupérer les statistiques initial | — | `StatsInitDTO` |
-| `PUT` | `/api/config/initial-stats` | Modifier les statistiques initial | `StatsInitDTO` | `StatsInitDTO` |
+| `GET` | `/api/config/thresholds` | Récupérer les seuils | — | `ThresholdsDto` |
+| `PUT` | `/api/config/thresholds` | Modifier les seuils | `ThresholdsDto` | `ThresholdsDto` |
+| `GET` | `/api/config/defeat-conditions` | Récupérer les conditions de défaite | — | `DefeatConditionsDto` |
+| `PUT` | `/api/config/defeat-conditions` | Modifier les conditions de défaite | `DefeatConditionsDto` | `DefeatConditionsDto` |
+| `GET` | `/api/config/initial-stats` | Récupérer les statistiques initial | — | `StatsInitDto` |
+| `PUT` | `/api/config/initial-stats` | Modifier les statistiques initial | `StatsInitDto` | `StatsInitDto` |
 
 ---
 
-## DTOs
+## Data Transfer Objects
 
-### PlayerDTO
+### PlayerDto
 ```json
 {
   "deviceId": "string",
   "createdAt": "datetime",
-  "progression": ProgressionDTO
+  "progression": ProgressionDto
 }
 ```
 
-### ProgressionDTO
+### ProgressionDto
 ```json
 {
   "deviceId": "string",
@@ -62,7 +67,7 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
-### UpdateProgressionDTO
+### UpdateProgressionDto
 ```json
 {
   "currentXP": 0,
@@ -70,7 +75,7 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
-### CardDTO
+### CardDto
 ```json
 {
   "slug": "string",
@@ -90,7 +95,8 @@ Handles player progression, card configuration, game settings and random events.
   "successMessage": "string",
   "failureMessage": "string",
   "events": EventDto[],
-  "statThresholds": CardStatThreshold[]
+  "statThresholds": CardStatThreshold[],
+  "requiredCardSlugs": Card.Slug[]
 }
 ```
 
@@ -118,8 +124,21 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
+### CardComboDto
+```json
+{
+  "id": "Guid",
+  "name": "string",
+  "message": "string",
+  "motivationDelta": 10,
+  "stressDelta": 10,
+  "performanceDelta": 10,
+  "turnoverDelta": 10,
+  "triggerSlugs": Card.Slug[]
+}
+```
 
-### ThresholdsDTO
+### ThresholdsDto
 ```json
 {
   "baseXP": 2000,
@@ -130,7 +149,7 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
-### DefeatConditionsDTO
+### DefeatConditionsDto
 ```json
 {
   "stress": { "min": 0, "max": 85 },
@@ -140,7 +159,7 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
-### StatsInitDTO
+### StatsInitDto
 ```json
 {
   "InitialMotivation": 50,
