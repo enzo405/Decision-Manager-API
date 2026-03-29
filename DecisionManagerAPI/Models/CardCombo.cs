@@ -1,5 +1,10 @@
+using DecisionManagerAPI.Data.Configurations;
+
+using Microsoft.EntityFrameworkCore;
+
 namespace DecisionManagerAPI.Models;
 
+[EntityTypeConfiguration(typeof(CardComboEntityConfiguration))]
 public class CardCombo
 {
   public required Guid Id { get; set; }

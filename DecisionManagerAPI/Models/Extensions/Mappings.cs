@@ -6,6 +6,7 @@ public static class CardMappings
 {
   public static CardDto ToDTO(this Card card, string locale = "fr") => new(
     card.Slug,
+    card.Type,
     locale == "fr" ? card.DisplayNameFr : card.DisplayNameEn,
     locale == "fr" ? card.DescriptionFr : card.DescriptionEn,
     card.RequiredLevel,

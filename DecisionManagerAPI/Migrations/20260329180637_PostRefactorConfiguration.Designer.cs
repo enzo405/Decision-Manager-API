@@ -3,6 +3,7 @@ using System;
 using DecisionManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DecisionManagerAPI.Migrations
 {
     [DbContext(typeof(DecisionManagerDbContext))]
-    partial class DecisionManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260329180637_PostRefactorConfiguration")]
+    partial class PostRefactorConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

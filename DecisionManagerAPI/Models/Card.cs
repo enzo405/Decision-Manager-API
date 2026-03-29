@@ -1,11 +1,16 @@
+using DecisionManagerAPI.Data.Configurations;
 using DecisionManagerAPI.Models.Enum;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace DecisionManagerAPI.Models;
 
+[EntityTypeConfiguration(typeof(CardEntityConfiguration))]
 public class Card
 {
   public int Id { get; set; }
   public required string Slug { get; set; }
+  public required CardType Type { get; set; }
   public required string DisplayNameEn { get; set; }
   public required string DisplayNameFr { get; set; }
   public required string DescriptionEn { get; set; }
@@ -25,7 +30,7 @@ public class Card
   public required string SuccessMessageFr { get; set; }
   public required string FailureMessageEn { get; set; }
   public required string FailureMessageFr { get; set; }
-  public required List<Event> Events { get; set; }
-  public List<CardStatThreshold> StatThresholds { get; set; } = new();
-  public List<CardRequirement> Requirements { get; set; } = new();
+  public required List<Event> Events { get; set; } = new();
+  public required List<CardStatThreshold> StatThresholds { get; set; } = new();
+  public required List<CardRequirement> Requirements { get; set; } = new();
 }

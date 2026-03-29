@@ -81,6 +81,7 @@ Handles player progression, card configuration, game settings and random events.
   "slug": "string",
   "displayName": "string",
   "description": "string",
+  "cardType": "Emergency",
   "requiredLevel": 1,
   "successProbability": 0.75,
   "motivationEffect": 0,

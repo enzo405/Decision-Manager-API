@@ -1,6 +1,6 @@
 namespace DecisionManagerAPI.Models.Enum;
 
-public enum ConditionTreshold
+public enum ConditionThreshold
 {
   Above,
   Below

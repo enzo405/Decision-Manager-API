@@ -3,6 +3,7 @@ using System;
 using DecisionManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,13 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DecisionManagerAPI.Migrations
 {
     [DbContext(typeof(DecisionManagerDbContext))]
-    partial class DecisionManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260329154834_AddCardType")]
+    partial class AddCardType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("decision_manager")
                 .HasAnnotation("ProductVersion", "10.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -109,7 +111,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("Slug")
                         .IsUnique();
 
-                    b.ToTable("Cards", "decision_manager");
+                    b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.CardCombo", b =>
@@ -148,7 +150,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CardCombos", "decision_manager");
+                    b.ToTable("CardCombo");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.CardComboTrigger", b =>
@@ -170,7 +172,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("CardSlug");
 
-                    b.ToTable("CardComboTriggers", "decision_manager");
+                    b.ToTable("CardComboTrigger");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.CardRequirement", b =>
@@ -192,7 +194,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("RequiredCardSlug");
 
-                    b.ToTable("CardRequirements", "decision_manager");
+                    b.ToTable("CardRequirement");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.CardStatThreshold", b =>
@@ -221,7 +223,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("CardId");
 
-                    b.ToTable("CardStatThresholds", "decision_manager");
+                    b.ToTable("CardStatThreshold");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.DefeatConditions", b =>
@@ -258,7 +260,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DefeatConditions", "decision_manager");
+                    b.ToTable("DefeatConditions");
 
                     b.HasData(
                         new
@@ -327,7 +329,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasIndex("CardId");
 
-                    b.ToTable("Events", "decision_manager");
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.GameConfig", b =>
@@ -355,7 +357,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GameConfigs", "decision_manager");
+                    b.ToTable("GameConfigs");
 
                     b.HasData(
                         new
@@ -378,9 +380,7 @@ namespace DecisionManagerAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DeviceId")
                         .IsRequired()
@@ -391,7 +391,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("DeviceId")
                         .IsUnique();
 
-                    b.ToTable("Players", "decision_manager");
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.Progression", b =>
@@ -416,7 +416,7 @@ namespace DecisionManagerAPI.Migrations
                     b.HasIndex("PlayerId")
                         .IsUnique();
 
-                    b.ToTable("Progressions", "decision_manager");
+                    b.ToTable("Progressions");
                 });
 
             modelBuilder.Entity("DecisionManagerAPI.Models.StatsInit", b =>
@@ -441,7 +441,7 @@ namespace DecisionManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StatsInits", "decision_manager");
+                    b.ToTable("StatsInits");
 
                     b.HasData(
                         new

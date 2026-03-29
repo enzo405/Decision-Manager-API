@@ -3,7 +3,8 @@ using DecisionManagerAPI.Models.Enum;
 namespace DecisionManagerAPI.Dtos;
 
 public record CardDto(
-  string Slug, 
+  string Slug,
+  CardType Type,
   string DisplayName, 
   string Description, 
   int RequiredLevel, 

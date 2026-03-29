@@ -1,10 +1,16 @@
+using DecisionManagerAPI.Data.Configurations;
+
+using Microsoft.EntityFrameworkCore;
+
 namespace DecisionManagerAPI.Models;
 
+
+[EntityTypeConfiguration(typeof(StatsInitEntityConfiguration))]
 public class StatsInit
 {
   public int Id { get; set; }
-  public int InitialMotivation { get; set; }
-  public int InitialStress { get; set; }
-  public int InitialPerformance { get; set; }
-  public int InitialTurnover { get; set; }
+  public required int InitialMotivation { get; set; }
+  public required int InitialStress { get; set; }
+  public required int InitialPerformance { get; set; }
+  public required int InitialTurnover { get; set; }
 }
