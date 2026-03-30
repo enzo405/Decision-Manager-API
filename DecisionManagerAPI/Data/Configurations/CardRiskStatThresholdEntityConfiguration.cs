@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DecisionManagerAPI.Data.Configurations;
 
-internal class CardStatThresholdEntityConfiguration : IEntityTypeConfiguration<CardStatThreshold>
+internal class CardRiskStatThresholdEntityConfiguration : IEntityTypeConfiguration<CardRiskStatThreshold>
 {
-  public void Configure(EntityTypeBuilder<CardStatThreshold> builder)
+  public void Configure(EntityTypeBuilder<CardRiskStatThreshold> builder)
   {
-    builder.ToTable("CardStatThresholds", "decision_manager");
+    builder.ToTable("CardRiskStatThresholds", "decision_manager");
 
     builder
       .HasOne(t => t.Card)
-      .WithMany(c => c.StatThresholds)
+      .WithMany(c => c.StatThresholdsRisk)
       .HasForeignKey(t => t.CardId)
       .OnDelete(DeleteBehavior.Cascade);
 

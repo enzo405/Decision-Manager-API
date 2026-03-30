@@ -21,6 +21,7 @@ public record CardDto(
   string SuccessMessage, 
   string FailureMessage, 
   List<EventDto> Events, 
-  List<CardStatThresholdDto> StatThresholds, 
+  List<CardRiskStatThresholdDto> StatThresholdsRisk, 
+  List<CardUnlockStatThresholdDto> StatThresholdsUnlock, 
   List<string> RequiredCardSlugs
 );

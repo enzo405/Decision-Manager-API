@@ -81,7 +81,7 @@ Handles player progression, card configuration, game settings and random events.
   "slug": "string",
   "displayName": "string",
   "description": "string",
-  "cardType": "Emergency",
+  "cardType": Emergency, // enum   Reactive, Foundation, Emergency, Universal
   "requiredLevel": 1,
   "successProbability": 0.75,
   "motivationEffect": 0,
@@ -96,8 +96,9 @@ Handles player progression, card configuration, game settings and random events.
   "successMessage": "string",
   "failureMessage": "string",
   "events": EventDto[],
-  "statThresholds": CardStatThreshold[],
-  "requiredCardSlugs": Card.Slug[]
+  "statThresholdsRisk": CardRiskStatThreshold[],
+  "requiredCardSlugs": Card.Slug[],
+  "statThresholdsUnlock": CardUnlockStatThreshold[]
 }
 ```
 
@@ -115,7 +116,7 @@ Handles player progression, card configuration, game settings and random events.
 }
 ```
 
-### CardStatThreshold
+### CardRiskStatThreshold
 ```json
 {
   "statName": "Motivation",

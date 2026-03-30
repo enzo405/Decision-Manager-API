@@ -31,6 +31,7 @@ public class Card
   public required string FailureMessageEn { get; set; }
   public required string FailureMessageFr { get; set; }
   public required List<Event> Events { get; set; } = new();
-  public required List<CardStatThreshold> StatThresholds { get; set; } = new();
+  public required List<CardRiskStatThreshold> StatThresholdsRisk { get; set; } = new();
   public required List<CardRequirement> Requirements { get; set; } = new();
+  public required List<CardUnlockStatThreshold> StatThresholdsUnlock { get; set; } = new();
 }

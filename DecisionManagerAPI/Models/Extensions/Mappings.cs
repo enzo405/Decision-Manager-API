@@ -23,7 +23,8 @@ public static class CardMappings
     locale == "fr" ? card.SuccessMessageFr : card.SuccessMessageEn,
     locale == "fr" ? card.FailureMessageFr : card.FailureMessageEn,
     card.Events.Select(ev => ev.ToDTO(locale)).ToList() ?? [],
-    card.StatThresholds.Select(ToDto).ToList() ?? [],
+    card.StatThresholdsRisk.Select(ToDto).ToList() ?? [],
+    card.StatThresholdsUnlock.Select(ToDto).ToList() ?? [],
     card.Requirements.Select(e => e.RequiredCardSlug).ToList() ?? []
   );
 
@@ -38,11 +39,17 @@ public static class CardMappings
     ev.TurnoverDelta,
     ev.Card.Slug);
 
-  public static CardStatThresholdDto ToDto(this CardStatThreshold cardStatThreshold) => new(
-    cardStatThreshold.StatName.ToString(),
-    cardStatThreshold.Condition.ToString(),
-    cardStatThreshold.Threshold,
-    cardStatThreshold.PenaltyAmount
+  public static CardRiskStatThresholdDto ToDto(this CardRiskStatThreshold cardRiskStatThreshold) => new(
+    cardRiskStatThreshold.StatName.ToString(),
+    cardRiskStatThreshold.Condition.ToString(),
+    cardRiskStatThreshold.Threshold,
+    cardRiskStatThreshold.PenaltyAmount
+  );
+
+  public static CardUnlockStatThresholdDto ToDto(this CardUnlockStatThreshold cardUnlockStatThreshold) => new(
+    cardUnlockStatThreshold.StatName.ToString(),
+    cardUnlockStatThreshold.Condition.ToString(),
+    cardUnlockStatThreshold.Threshold
   );
 
   public static CardComboDto ToDto(this CardCombo cardCombo, string locale) => new(

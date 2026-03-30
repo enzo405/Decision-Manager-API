@@ -18,7 +18,7 @@ public class DecisionManagerDbContext : DbContext
   public DbSet<GameConfig> GameConfigs { get; set; }
   public DbSet<DefeatConditions> DefeatConditions { get; set; }
   public DbSet<StatsInit> StatsInits { get; set; }
-  public DbSet<CardStatThreshold> CardStatThreshold { get; set; }
+  public DbSet<CardRiskStatThreshold> CardRiskStatThreshold { get; set; }
   public DbSet<CardRequirement> CardRequirement { get; set; }
   public DbSet<CardComboTrigger> CardComboTrigger { get; set; }
   public DbSet<CardCombo> CardCombo { get; set; }

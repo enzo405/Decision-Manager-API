@@ -20,7 +20,8 @@ public class CardRepository(DecisionManagerDbContext context) : ICardRepository
     return await _context.Cards
       .Include(c => c.Events)
       .Include(c => c.Requirements)
-      .Include(c => c.StatThresholds)
+      .Include(c => c.StatThresholdsRisk)
+      .Include(c => c.StatThresholdsUnlock)
       .Select(c => c.ToDTO(locale))
       .ToListAsync();
   }
